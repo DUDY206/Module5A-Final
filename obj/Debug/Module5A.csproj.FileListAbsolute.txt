@@ -1,0 +1,11 @@
+C:\Users\DUY\source\repos\Module5A\bin\Debug\Module5A.exe.config
+C:\Users\DUY\source\repos\Module5A\bin\Debug\Module5A.exe
+C:\Users\DUY\source\repos\Module5A\bin\Debug\Module5A.pdb
+C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.csprojAssemblyReference.cache
+C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.Properties.Resources.resources
+C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.csproj.GenerateResource.cache
+C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.exe
+C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.pdb
+C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.PurchaseAmenities.resources
+C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.MainOptions.resources
+C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.MakeReports.resources
