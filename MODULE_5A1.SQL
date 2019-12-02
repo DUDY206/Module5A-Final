@@ -239,10 +239,13 @@ UPDATE CabinTypes SET Name = 'Premium economy class' WHERE ID = 'C'
 UPDATE CabinTypes SET Name = 'Economy class' WHERE ID = 'D'
 SELECT * FROM CabinTypes
 
-INSERT INTO dbo.Amenities VALUES('amt_01','BEER',20)
+INSERT INTO dbo.Amenities VALUES('amt_01','BEER',0)
+update Amenities set 
 INSERT INTO dbo.Amenities VALUES('amt_02','LIVE AT 35',35)
 INSERT INTO dbo.Amenities VALUES('amt_03','DIRECT TV',50)
 INSERT INTO dbo.Amenities VALUES('amt_04','SLPPER',45)
+
+UPDATE Amenities SET Price = 0 WHERE Amenities.ID = 'amt_04'
 INSERT INTO dbo.Amenities VALUES('amt_05','DONT DISTURB',10)
 INSERT INTO dbo.Amenities VALUES('amt_06','TURKISH COFFEE',15)
 INSERT INTO dbo.Amenities VALUES('amt_07','SEAT-TO-SEAT CHAR',30)
@@ -258,6 +261,8 @@ INSERT INTO AmenitiesCabinType VALUES('amt_02','A')
 INSERT INTO AmenitiesCabinType VALUES('amt_03','A')
 INSERT INTO AmenitiesCabinType VALUES('amt_04','A')
 INSERT INTO AmenitiesCabinType VALUES('amt_05','A')
+
+INSERT INTO AmenitiesCabinType VALUES('amt_10','A')
 INSERT INTO AmenitiesCabinType VALUES('amt_01','B')
 INSERT INTO AmenitiesCabinType VALUES('amt_02','B')
 INSERT INTO AmenitiesCabinType VALUES('amt_03','B')
@@ -305,7 +310,8 @@ INSERT dbo.Schedules VALUES('S2001', '03-10-2019', '03:00:00', 'A320', 'route_07
 INSERT dbo.Schedules VALUES('S2010', '03-10-2019', '03:00:00', 'A320', 'route_08', '102-908', 240, 1)
 DELETE FROM Tickets WHERE BookingReference = '04'
 INSERT INTO Tickets VALUES('0011','u9','S2000','D','Ninh','Khuong Duy','0123456789','99999999','MAL','04',1)
-INSERT INTO Tickets VALUES('0012','u2','S2001','D','Mai','Tien Tien ','0123456789','88888888','MAL','04',1)
+INSERT INTO Tickets VALUES('0012','u2','S2001','B','Mai','Tien Tien ','0123456789','88888888','MAL','04',1)
+UPDATE Tickets SET CabinType = 'A' WHERE Tickets.ID = '0012'
 INSERT INTO Tickets VALUES('0013','u3','S2010','D','Nguyen','Ngoc Hai','0123456789','77777777','MAL','04',1)
 SELECT * FROM AmenitiesTickets
 DELETE FROM AmenitiesTickets
@@ -436,3 +442,5 @@ INSERT INTO AmenitiesTickets VALUES('amt_11','44443',0)
 
 UPDATE Schedules SET Date = DATEADD(day, 1, convert(date, GETDATE())),Time = GETDATE() WHERE ID LIKE '%S200%'
 
+UPDATE Schedules SET Date = DATEADD(day, 1, convert(date, GETDATE())),Time = GETDATE() WHERE ID LIKE 'S4'
+SELECT * FROM AmenitiesCabinType INNER JOIN Amenities ON AmenitiesCabinType.AmenitiesID = Amenities.ID WHERE CabinTypeID = 'B'

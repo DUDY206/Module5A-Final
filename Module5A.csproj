@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,14 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\AmenitiesBLL.cs" />
-    <Compile Include="BLL\AmenitiesTicketsBLL.cs" />
-    <Compile Include="BLL\BookingReferenceBLL.cs" />
-    <Compile Include="BLL\Cabin.cs" />
-    <Compile Include="BLL\Schedule.cs" />
-    <Compile Include="BLL\TicketBLL.cs" />
-    <Compile Include="DAL\Connection.cs" />
-    <Compile Include="DAL\DataDAL.cs" />
     <Compile Include="MainOptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +98,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{c6608186-ceda-489f-bbae-58e7f576493d}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

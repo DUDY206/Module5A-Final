@@ -280,7 +280,7 @@
             this.Controls.Add(this.txtBookingReference);
             this.Controls.Add(this.label1);
             this.Name = "PurchaseAmenities";
-            this.Text = "Form1";
+            this.Text = "Purchase Amenities";
             this.Load += new System.EventHandler(this.PurchaseAmenities_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

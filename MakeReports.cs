@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Module5A.BLL;
+using BLL;
 namespace Module5A
 {
     public partial class MakeReports : Form
@@ -21,8 +21,11 @@ namespace Module5A
         string info;
         private void cbx_ffli_CheckedChanged(object sender, EventArgs e)
         {
+            //tìm kiếm theo flight_num
             if(cbx_ffli.Checked == true)
             {
+                //chọn lại vị trí cho nút make repory
+                //ẩn các nút thuộc tính cho lựa chọn tìm kiếm theo ngày
                 btnMakeRP.Location = new Point(266, 7);
                 txtInput.Show();
                 dtp.Hide();
@@ -33,7 +36,7 @@ namespace Module5A
         }
        private void ChangeDate(object sender, EventArgs e)
         {
-            Schedule objBLL = new Schedule();
+            BussinessLayer objBLL = new BussinessLayer();
             DataTable listFlight = objBLL.GetListFlight(dtp.Text);
 
             if (listFlight.Rows.Count == 0)
@@ -45,7 +48,7 @@ namespace Module5A
             {
                 cbxFlight.DataSource = listFlight;
                 cbxFlight.DisplayMember = "FlightNumber";
-                cbxFlight.ValueMember = "FlightNumber";
+                //cbxFlight.ValueMember = "FlightNumber";
             }
 
         }
@@ -53,6 +56,7 @@ namespace Module5A
         {
             if (cbx_fday.Checked == true)
             {
+                //tạo các nút mới khi lựa chọn tìm kiếm theo ngày (cbxFlight,btnFindFlight)
                 btnMakeRP.Location = new Point(266, 31);
                 txtInput.Hide();
                 dtp.Show();
@@ -93,19 +97,22 @@ namespace Module5A
 
         private void PushDataToDGV(string info)
         {
-            AmenitiesTicketsBLL objBLL = new AmenitiesTicketsBLL();
-            Cabin OBJcb = new Cabin();
-            DataTable listCabin = OBJcb.GetListCabin();
-            bool ans = new Schedule().IsExistFN(info);
+            //hàm trả về dữ liệu cho report thông qua flight number
+            BussinessLayer objBLL = new BussinessLayer();
+            BussinessLayer objCabin = new BussinessLayer();
+            DataTable listCabin = objCabin.GetListCabin();
+            bool ans = new BussinessLayer().IsExistFN(info);
             if (ans == false)
             {
                 MessageBox.Show("Flight number is invalid!");
             }
             else
             {
+                //đổ datasource cho datagridview
                 dgvTotalAmenity.DataSource = objBLL.ReportAmenities(info);
                 for (int i = 0; i < listCabin.Rows.Count; i++)
                 {
+                    //gán header name thông qua list đã query trước
                     dgvTotalAmenity.Rows[i].HeaderCell.Value = listCabin.Rows[i]["Name"].ToString();
                 }
                 dgvTotalAmenity.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

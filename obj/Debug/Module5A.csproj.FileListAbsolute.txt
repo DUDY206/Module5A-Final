@@ -9,3 +9,8 @@ C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.pdb
 C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.PurchaseAmenities.resources
 C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.MainOptions.resources
 C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.MakeReports.resources
+C:\Users\DUY\source\repos\Module5A\bin\Debug\BLL.dll
+C:\Users\DUY\source\repos\Module5A\bin\Debug\DAL.dll
+C:\Users\DUY\source\repos\Module5A\bin\Debug\BLL.pdb
+C:\Users\DUY\source\repos\Module5A\bin\Debug\DAL.pdb
+C:\Users\DUY\source\repos\Module5A\obj\Debug\Module5A.csproj.CopyComplete

@@ -34,6 +34,7 @@
             this.btnMakeRP = new System.Windows.Forms.Button();
             this.dgvTotalAmenity = new System.Windows.Forms.DataGridView();
             this.dtp = new System.Windows.Forms.DateTimePicker();
+            this.titledgv = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalAmenity)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +81,7 @@
             // dgvTotalAmenity
             // 
             this.dgvTotalAmenity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTotalAmenity.Location = new System.Drawing.Point(12, 74);
+            this.dgvTotalAmenity.Location = new System.Drawing.Point(12, 93);
             this.dgvTotalAmenity.Name = "dgvTotalAmenity";
             this.dgvTotalAmenity.Size = new System.Drawing.Size(1042, 304);
             this.dgvTotalAmenity.TabIndex = 4;
@@ -94,11 +95,20 @@
             this.dtp.TabIndex = 6;
             this.dtp.Value = new System.DateTime(2019, 11, 13, 0, 0, 0, 0);
             // 
+            // titledgv
+            // 
+            this.titledgv.AutoSize = true;
+            this.titledgv.Location = new System.Drawing.Point(461, 65);
+            this.titledgv.Name = "titledgv";
+            this.titledgv.Size = new System.Drawing.Size(0, 13);
+            this.titledgv.TabIndex = 7;
+            // 
             // MakeReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1073, 538);
+            this.Controls.Add(this.titledgv);
             this.Controls.Add(this.dgvTotalAmenity);
             this.Controls.Add(this.btnMakeRP);
             this.Controls.Add(this.cbx_fday);
@@ -122,5 +132,6 @@
         private System.Windows.Forms.Button btnMakeRP;
         private System.Windows.Forms.DataGridView dgvTotalAmenity;
         private System.Windows.Forms.DateTimePicker dtp;
+        private System.Windows.Forms.Label titledgv;
     }
 }

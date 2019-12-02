@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Module5A.BLL;
+using BLL;
 namespace Module5A
 {
 
@@ -37,14 +37,14 @@ namespace Module5A
         }
         private void btnOK_Click(object sender, EventArgs e)
         {
-            BookingReferenceBLL objBLL = new BookingReferenceBLL();
+            BussinessLayer objBLL = new BussinessLayer();
             DataTable listTicket = objBLL.GetListTicket(txtBookingReference.Text);
             cbxTicket.DataSource = listTicket;
             //không tìm thấy chuyến bay theo mã booking
-            if(listTicket.Rows.Count == 0)
+            if (listTicket.Rows.Count == 0)
             {
                 MessageBox.Show("Cannot found Fight!");
-                Reset_Form(true);
+                Reset_Form();
             }
             else
             {
@@ -63,7 +63,7 @@ namespace Module5A
         {
             clbx.DataSource = null;
             groupBox2.Controls.Clear();
-            TicketBLL objBLL = new TicketBLL();
+            BussinessLayer objBLL = new BussinessLayer();
             string tick_id = cbxTicket.SelectedValue.ToString();
             if (objBLL.IsInvalidHour(tick_id))
             {
@@ -83,7 +83,8 @@ namespace Module5A
                 clbx.ColumnWidth = 180;
                 clbx.MultiColumn = true;
                 clbx.CheckOnClick = true;
-                AmenitiesBLL objAmentitiesBLL = new AmenitiesBLL();
+                //đổ dữ liệu vào checklistbox
+                BussinessLayer objAmentitiesBLL = new BussinessLayer();
                 listAmentities = objAmentitiesBLL.GetListAmenities(tick_id);
                 clbx.DataSource = listAmentities;
                 clbx.DisplayMember = "Info";
@@ -96,13 +97,16 @@ namespace Module5A
                 {
                     if(listAmentities.Rows[i]["Price"].ToString() == "0")
                     {
+                        //free 
                         clbx.SetItemCheckState(i, CheckState.Indeterminate);
                     }else if(!String.IsNullOrEmpty(listAmentities.Rows[i]["Price_bought"].ToString()))
                     {
+                        //trả phí - đã mua
                         clbx.SetItemCheckState(i, CheckState.Checked);
                     }
                     else
                     {
+                        //trả phí - chưa mua
                         clbx.SetItemCheckState(i, CheckState.Unchecked);
                     }
                 }
@@ -118,8 +122,9 @@ namespace Module5A
                 MessageBox.Show("This service is avaibable up to 24 hours before the flight!");
             }
         }
-        private void Reset_Form(bool ok)
+        private void Reset_Form()
         {
+            //giao diện mặc định cho form 
             cbxTicket.Text = "";
             lbTotalPrice.Text = "[$XX]";
             lbDuties.Text = "[$XX]";
@@ -127,24 +132,20 @@ namespace Module5A
             lblFullName.Text = "[ XXXXX XXXXXXXXXXX ]";
             lblPassportNumber.Text = "[ XXXXX XXXXXXXXXXX ]";
             lblCabinClass.Text = "[ XXXXX XXXXXXXXXXX ]";
-
-
-            if(ok == true)
-            {
-                btnShowAmen.Enabled = false;
-                cbxTicket.Enabled = false;
-            }
+            btnShowAmen.Enabled = false;
+            cbxTicket.Enabled = false;
             btnSave.Enabled = false;
             groupBox2.Controls.Clear();
         }
 
         private void PurchaseAmenities_Load(object sender, EventArgs e)
         {
-            Reset_Form(true);
+            Reset_Form();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            //tạo ra messagebox xác nhận thanh toán
             string message = "Do you confirm buy there amenities?";
             string title = "Save and confirm";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -153,7 +154,7 @@ namespace Module5A
             {
                 for (int i = 0; i < listAmentities.Rows.Count; i++)
                 {
-                    AmenitiesTicketsBLL objBLL = new AmenitiesTicketsBLL();
+                    BussinessLayer objBLL = new BussinessLayer();
                     string tick_id = cbxTicket.SelectedValue.ToString();
                     string amenity_id = listAmentities.Rows[i]["ID"].ToString();
                     //trường hợp mua thêm
@@ -170,7 +171,7 @@ namespace Module5A
                     }
                 }
                 MessageBox.Show("Change buying amenities successfully");
-                Reset_Form(true);
+                Reset_Form();
             }
         }
 
