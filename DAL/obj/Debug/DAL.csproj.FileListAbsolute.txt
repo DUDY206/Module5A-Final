@@ -1,0 +1,5 @@
+C:\Users\DUY\source\repos\DAL\bin\Debug\DAL.dll
+C:\Users\DUY\source\repos\DAL\bin\Debug\DAL.pdb
+C:\Users\DUY\source\repos\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\DUY\source\repos\DAL\obj\Debug\DAL.dll
+C:\Users\DUY\source\repos\DAL\obj\Debug\DAL.pdb
